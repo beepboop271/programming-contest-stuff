@@ -73,6 +73,8 @@ int asdljasdhlg(node * n, int dest) {
 }
 
 int main() {
+    fill(&visited[0], 1000010, 0);
+
     int n, m;
     scanf(" %d%d", &n, &m);
     for(int i = 1; i <= n; ++i) {
@@ -86,20 +88,12 @@ int main() {
     }
 
     scanf(" %d%d", &p, &q);
-    int result;
-
-    fill(&visited[0], 1000010, 0);
-    result = asdljasdhlg(nodes[p], q);
-    if(result) {
+    if(asdljasdhlg(nodes[p], q)) {
         printf("%s\n", "yes");
+    } else if(asdljasdhlg(nodes[q], p)) {
+        printf("%s\n", "no");
     } else {
-        fill(&visited[0], 1000010, 0);
-        result = asdljasdhlg(nodes[q], p);
-        if(result) {
-            printf("%s\n", "no");
-        } else {
-            printf("%s\n", "unknown");
-        }
+        printf("%s\n", "unknown");
     }
 
     for(int i = 1; i <= n; ++i) {

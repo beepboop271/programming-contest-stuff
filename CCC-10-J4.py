@@ -4,7 +4,6 @@ import sys
 def read():
     return map(int, sys.stdin.readline().strip().split(" "))
 
-
 def checkValid(period, diffs):
     chain = diffs[:period]
     # print period, chain, sum(chain), len(diffs)/period

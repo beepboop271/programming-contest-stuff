@@ -40,9 +40,7 @@ void asdfasdfasg(int game, int * scores) {
         int newScore1[5];
         copy(scores, newScore1, 5);
         newScore1[gamePairsLeft[game][0]] += 3;
-        asdfasdfasg(game+1, &newScore1[0]
-        
-        );
+        asdfasdfasg(game+1, &newScore1[0]);
 
         int newScore2[5];
         copy(scores, newScore2, 5);
