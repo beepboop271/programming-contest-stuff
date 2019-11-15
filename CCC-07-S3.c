@@ -1,21 +1,20 @@
-#include <bits/stdc++.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <limits.h>
+#include <math.h>
 #define ll long long
 #define byte unsigned char
-#define pii std::pair<int, int>
-#define vi std::vector<int>
 #define printi(a) printf("%d\n",a)
-#define printii(a,b) printf("%d %d\n",a,b);
-#define scani(vara) scanf(" %d",&vara)
-#define scanii(vara,varb) scanf(" %d%d",&vara,&varb)
-#define scanNewi(vara) int vara; scanf(" %d",&vara)
-#define scanNewii(vara,varb) int vara,varb; scanf(" %d %d",&vara,&varb)
+#define printii(a,b) printf("%d %d\n",a,b)
+#define scani(a) scanf(" %d",&a)
+#define scanii(a,b) scanf(" %d %d",&a,&b)
+#define scanNewi(a) int a; scanf(" %d",&a)
+#define scanNewii(a,b) int a,b; scanf(" %d %d",&a,&b)
 #define fi(var, initial, max) for(int var=initial; var<max; ++var)
 #define fd(var, initial, least) for(int var=initial; var>least; --var)
 
-int people[10010];
-
 int main() {
-  memset(people, -1, sizeof(int)*10010);
+  int * people = calloc(10010, sizeof(int));
   scanNewi(n);
   int x, y;
   fi(i, 0, n) {
@@ -26,16 +25,14 @@ int main() {
   scanii(x, y);
   int cur;
   int sep;
-  bool found;
+  int found;
   while(!(x == 0 && y == 0)) {
     cur = x;
     sep = -1;
-    found = false;
-    while((cur != x && cur != -1) || (cur == x && sep == -1)) {
-      // printii(cur, x);
-      // printi(sep);
+    found = 0;
+    while((cur != x && cur != 0) || (cur == x && sep == -1)) {
       if(cur == y) {
-        found = true;
+        found = 1;
       }
       cur = people[cur];
       if(!found) {
@@ -47,9 +44,9 @@ int main() {
     } else {
       printf("No\n");
     }
-    
     scanii(x, y);
   }
-
+  
+  free(people);
   return 0;
 }
