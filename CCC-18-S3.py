@@ -70,7 +70,7 @@ for y in xrange(gridHeight):
 
 
 def findPath(x, y, depth):
-    if depth > 500:
+    if distances[y][x] > -1 and distances[y][x] <= depth:
         return
     if grid[y][x] == "W" or grid[y][x] == "V" or grid[y][x] == "C" or grid[y][x] == "X":
         return
