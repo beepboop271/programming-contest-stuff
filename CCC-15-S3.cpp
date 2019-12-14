@@ -18,22 +18,38 @@
 #define maximum(a,b) (a>b?a:b)
 #define in(val,minval,maxval) (val>=minval&&val<=maxval)
 
-#define vi std::vector<int>
-
+#define bst std::set<int>
 
 int main() {
   scannewii(g, p);
-  
-  vi gates {g+10, 0};
+  bst gates {};
   fi(i, 0, g) {
-    gates[i] = i+1;
+    gates.insert(i+1);
   }
 
   int gi;
+  bst::iterator lb;
   fi(i, 0, p) {
     scani(gi);
+    if(gates.empty()) {
+      printi(i);
+      return 0;
+    }
 
+    lb = gates.lower_bound(gi);
+    if(lb == gates.end()) {
+      gates.erase(*gates.rbegin());
+    } else if(*lb == gi) {
+      gates.erase(gi);
+    } else if(lb == gates.begin()) {
+      printi(i);
+      return 0;
+    } else {
+      --lb;
+      gates.erase(*lb);
+    }
   }
+  printi(p);
 
   return 0;
 }
